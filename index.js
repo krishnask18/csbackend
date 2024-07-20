@@ -49,10 +49,10 @@ app.get('/profile', async (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
     var ipu = data[1]
     data = data[0]
-    if(ipu != ip) {
-        res.json({})
-        return;
-    }
+    // if(ipu != ip) {
+    //     res.json({})
+    //     return;
+    // }
     var usr = await person.findOne({gid : data})
     if(!usr){
         res.json({})
