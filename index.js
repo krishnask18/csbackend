@@ -34,7 +34,7 @@ app.get('/', passport.authenticate('google', {
 
 app.use(passport.initialize())
     
-app.get('/loggedin', (req, res)=>{
+app.get('/loggedin', passport.authenticate('google'), (req, res)=>{
     var url_ = req.cookies['url_']
     const ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
     res.cookie('PUERTOPONDICKMANNSON', req.user.gid+"%^&"+ip, {maxAge: 5 * 24*60*60*1000})
