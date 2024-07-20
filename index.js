@@ -15,6 +15,7 @@ const postq = require('./quepost')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(cookie_parser())
 app.use(CORS({credentials: true, origin: 'http://localhost:5173', methods: "GET"}
   ))
