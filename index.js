@@ -80,4 +80,4 @@ app.post('/ques', (req, res)=>{
 
 app.listen(3000, ()=>console.log("http://localhost:3000"))
 
-// http://localhost:5173/loggedin
+// http://localhost:5173/profile
