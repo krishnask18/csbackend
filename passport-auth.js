@@ -15,7 +15,7 @@ passport.use(
     new GoogleStrategy({
         clientID:"403480712512-ijv0sd2c1kl53it0cn9ekcomfgpmr2ua.apps.googleusercontent.com",
         clientSecret:"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",
-        callbackURL:'/loggedin',
+        callbackURL:'https://csbackend-git-main-krishnas-projects-e88a8c5b.vercel.app/loggedin',
     },
         async (accessToken, refreshToken, profile, done)=>{
             if(
