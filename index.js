@@ -13,14 +13,6 @@ const post = require('./quepost')
 const bodyParser = require('body-parser');
 const postq = require('./quepost')
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use(cookie_parser())
-app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-projects-e88a8c5b.vercel.app', methods: "GET", 
-    headers: ["Content-Type"],}
-  ))
-
 const options = {
     httpOnly: true ,
     secure: true,
@@ -28,6 +20,14 @@ const options = {
     httpFlag : true,
     domain: 'axz.onrender.com',
 }
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cookie_parser())
+app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-projects-e88a8c5b.vercel.app', methods: "GET", 
+    headers: ["Content-Type"],}
+  ))
 
 app.use('/', function (req, res, next){
     const url_ = req.query['rqst']
