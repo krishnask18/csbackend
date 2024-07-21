@@ -27,6 +27,12 @@ app.use('/', function (req, res, next){
     res.cookie('url_', url_)
     next()
 })
+const options = {
+    httpOnly: true ,
+    secure: true,
+    sameSite: 'none',
+    domain: 'axz.onrender.com',
+    }
 
 app.get('/', passport.authenticate('google', {  
     scope: ['profile', 'email']
@@ -38,7 +44,7 @@ app.use(passport.initialize())
 app.get('/loggedin', passport.authenticate('google'), (req, res)=>{
     var url_ = req.cookies['url_']
     const ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
-    res.cookie('PUERTOPONDICKMANNSON', req.user.gid+"%^&"+ip, {maxAge: 5 * 24*60*60*1000})
+    res.cookie('PUERTOPONDICKMANNSON', req.user.gid+"%^&"+ip, {maxAge: 5 * 24*60*60*1000}, options)
     res.redirect(
         url_
     )
