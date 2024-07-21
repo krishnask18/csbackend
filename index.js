@@ -30,7 +30,7 @@ app.use('/', function (req, res, next){
 const options = {
     httpOnly: true ,
     secure: true,
-    sameSite: 'none',
+    sameSite: 'None',
     domain: 'axz.onrender.com',
     }
 
