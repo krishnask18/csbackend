@@ -24,7 +24,7 @@ app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-p
 app.use('/', function (req, res, next){
     var url_ = req.query['rqst']
     console.log(url_)
-    res.cookie('url_', url_)
+    res.cookie('url_', url_, options)
     next()
 })
 const options = {
@@ -32,6 +32,7 @@ const options = {
     secure: true,
     sameSite: 'None',
     domain: 'axz.onrender.com',
+    httpFlag : true
     }
 
 app.get('/', passport.authenticate('google', {  
