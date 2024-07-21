@@ -18,7 +18,7 @@ const options = {
     secure: true,
     sameSite: 'None',
     httpFlag : true,
-    domain: 'axz.onrender.com',
+    domain: 'controlsee-git-main-krishnas-projects-e88a8c5b.vercel.app',
 }
 
 app.use(express.json());
@@ -32,7 +32,7 @@ app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-p
 app.use('/', function (req, res, next){
     const url_ = req.query['rqst']
     console.log(url_)
-    res.cookie('url_', url_)
+    res.cookie('url_', url_, options)
     next()
 })
 
