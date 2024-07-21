@@ -18,7 +18,8 @@ const options = {
     secure: true,
     sameSite: 'None',
     httpFlag : true,
-    domain: 'controlsee-git-main-krishnas-projects-e88a8c5b.vercel.app',
+    // domain: 'controlsee-git-main-krishnas-projects-e88a8c5b.vercel.app',
+    maxAge: 5 * 24*60*60*1000
 }
 
 app.use(express.json());
@@ -46,7 +47,7 @@ app.use(passport.initialize())
 app.get('/loggedin', passport.authenticate('google'), (req, res)=>{
     var url_ = req.cookies['url_']
     const ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
-    res.cookie('PUERTOPONDICKMANNSON', req.user.gid+"%^&"+ip, {maxAge: 5 * 24*60*60*1000}, options)
+    res.cookie('PUERTOPONDICKMANNSON', req.user.gid+"%^&"+ip, options)
     res.redirect(
         url_
     )
