@@ -21,19 +21,20 @@ app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-p
     headers: ["Content-Type"],}
   ))
 
-app.use('/', function (req, res, next){
-    var url_ = req.query['rqst']
-    console.log(url_)
-    res.cookie('url_', url_, options)
-    next()
-})
 const options = {
     httpOnly: true ,
     secure: true,
     sameSite: 'None',
+    httpFlag : true,
     domain: 'axz.onrender.com',
-    httpFlag : true
-    }
+}
+
+app.use('/', function (req, res, next){
+    const url_ = req.query['rqst']
+    console.log(url_)
+    res.cookie('url_', url_, options)
+    next()
+})
 
 app.get('/', passport.authenticate('google', {  
     scope: ['profile', 'email']
