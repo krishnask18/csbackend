@@ -56,7 +56,7 @@ app.get('/profile', async (req, res) => {
     // }
     var usr = await person.findOne({gid : data})
     if(!usr){
-        res.json({})
+        res.json({"error":"yes"})
     } else
     res.json(usr)
 })
