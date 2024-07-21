@@ -45,7 +45,7 @@ app.get('/loggedin', passport.authenticate('google'), (req, res)=>{
     res.end()
 })
 
-app.get('/profile', async (req, res) => {
+app.post('/profile', async (req, res) => {
     var data = String(req.body['PUERTOPONDICKMANNSON']).split("%^&")
     const ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
     var ipu = data[1]
