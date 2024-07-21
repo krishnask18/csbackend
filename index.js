@@ -32,7 +32,7 @@ app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-p
 app.use('/', function (req, res, next){
     const url_ = req.query['rqst']
     console.log(url_)
-    res.cookie('url_', url_, options)
+    res.cookie('url_', url_)
     next()
 })
 
