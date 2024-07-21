@@ -56,7 +56,7 @@ app.get('/profile', async (req, res) => {
     // }
     var usr = await person.findOne({gid : data})
     if(!usr){
-        res.json({"error":"yes"})
+        res.json(req.cookies)
     } else
     res.json(usr)
 })
