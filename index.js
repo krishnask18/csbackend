@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookie_parser())
-app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-projects-e88a8c5b.vercel.app', methods: "GET"}
+app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-projects-e88a8c5b.vercel.app', methods: "GET", 
+    headers: ["Content-Type"],}
   ))
 
 app.use('/', function (req, res, next){
