@@ -57,7 +57,7 @@ app.get('/profile', async (req, res) => {
     if(!usr){
         res.json({})
     } else
-    res.send(usr)
+    res.json(usr)
 })
 
 app.post('/userpage', async (req, res)=>{
