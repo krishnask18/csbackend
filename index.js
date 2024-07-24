@@ -30,9 +30,12 @@ app.use(CORS({credentials: true, origin: 'https://controlsee-git-main-krishnas-p
     headers: ["Content-Type"],}
   ))
 
+var ip;
+
 app.use('/', function (req, res, next){
     const url_ = req.query['rqst']
     console.log(url_)
+    ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
     res.cookie('url_', url_, options)
     next()
 })
@@ -46,7 +49,6 @@ app.use(passport.initialize())
     
 app.get('/loggedin', passport.authenticate('google'), (req, res)=>{
     var url_ = req.cookies['url_']
-    const ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
     res.cookie('PUERTOPONDICKMANNSON', req.user.gid+"%^&"+ip, options)
     res.redirect(
         url_
@@ -59,10 +61,10 @@ app.get('/profile', async (req, res) => {
     const ip = req.headers['x-forwarded-for'] || req.headers['cf-connecting-ip'] || req.headers['x-real-ip'] || req.socket.remoteAddress || "";
     var ipu = data[1]
     data = data[0]
-    // if(ipu != ip) {
-    //     res.json({})
-    //     return;
-    // }
+    if(ipu != ip) {
+        res.json({})
+        return;
+    }
     var usr = await person.findOne({gid : data})
     if(!usr){
         res.json(req.cookies)
