@@ -12,6 +12,7 @@ const person = require('./person')
 const post = require('./quepost')
 const bodyParser = require('body-parser');
 const postq = require('./quepost')
+const question = require('./question')
 
 const options = {
     httpOnly: true ,
@@ -87,6 +88,13 @@ app.post('/ques', (req, res)=>{
     data['mfg'] = new Date()
     postq(data)
     res.send("done")
+})
+
+app.get('/feed', async (req, res)=>{
+    const lst = await question.find({}, 'title');
+    res.json({
+        'data':lst
+    })
 })
 
 
