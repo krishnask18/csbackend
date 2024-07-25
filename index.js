@@ -95,6 +95,7 @@ app.get('/feed', async (req, res)=>{
     res.json({
         'data':lst
     })
+    res.end()
 })
 
 
